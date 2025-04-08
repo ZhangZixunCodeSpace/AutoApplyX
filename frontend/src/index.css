@@ -1,0 +1,84 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 确保基本样式不与 Ant Design 冲突 */
+html,
+body {
+  @apply m-0 p-0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  overflow: hidden;
+  /* 防止整个页面出现滚动条 */
+}
+
+/* 聊天消息相关样式 */
+.chat-message {
+  @apply mb-4 px-4 py-3 rounded-lg max-w-[80%] text-left;
+}
+
+.user-message {
+  @apply bg-blue-100 ml-auto;
+}
+
+.agent-message {
+  @apply bg-gray-100 mr-auto;
+}
+
+/* 定义滚动条样式 */
+.custom-scrollbar::-webkit-scrollbar {
+  @apply w-2;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-gray-100 rounded-full;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-gray-300 rounded-full hover:bg-gray-400;
+}
+
+/* 侧边栏样式 */
+.sidebar {
+  @apply h-screen bg-gray-50 border-r border-gray-200;
+}
+
+/* 让文件上传按钮和提交按钮保持一致的高度 */
+.input-actions .ant-upload-button,
+.input-actions .ant-btn {
+  @apply h-10;
+}
+
+/* 优化代码块等特殊内容 */
+.chat-message pre {
+  @apply overflow-x-auto;
+  max-width: 100%;
+}
+
+.chat-message code {
+  @apply whitespace-pre-wrap;
+}
+
+/* 修复 Markdown 内容的对齐问题 */
+.chat-message .prose {
+  @apply text-left w-full;
+}
+
+/* 确保段落左对齐 */
+.chat-message p {
+  @apply text-left;
+}
