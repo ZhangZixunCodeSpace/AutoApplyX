@@ -1,34 +1,25 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { ConfigProvider } from 'antd'
+import zhCN from 'antd/locale/zh_CN'
+import Chat from './components/Chat'
+import Sidebar from './components/Sidebar'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <ConfigProvider locale={zhCN}>
+      <div className="flex h-screen overflow-hidden bg-white">
+        {/* 侧边栏 (占屏幕宽度的 1/5) */}
+        <div className="w-1/5 min-w-[250px] max-w-[300px]">
+          <Sidebar />
+        </div>
+
+        {/* 聊天区域 (占屏幕宽度的 4/5) */}
+        <div className="flex-1 flex flex-col">
+          <Chat />
+        </div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    </ConfigProvider>
   )
 }
 
