@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Input, Button, Upload, Typography, Spin, Divider, Empty, message } from 'antd';
+import { Input, Button, Upload, Typography, Empty, message } from 'antd';
 import { SendOutlined, FileOutlined, DeleteOutlined, UserOutlined, RobotOutlined } from '@ant-design/icons';
 import ReactMarkdown from 'react-markdown';
 
@@ -105,13 +105,13 @@ const Chat = () => {
 
     return (
         <div className="flex flex-col h-full">
-            {/* 聊天头部 */}
-            <div className="flex-none p-4 border-b border-gray-200">
+            {/* 聊天头部 - 固定在顶部，确保不会被遮挡 */}
+            <div className="flex-none p-4 border-b border-gray-200 bg-white z-10">
                 <Title level={4} className="m-0">AutoApplyX AI 助手</Title>
                 <Text type="secondary">基于 OpenManus 框架的智能求职辅助系统</Text>
             </div>
 
-            {/* 聊天内容区域 */}
+            {/* 聊天内容区域 - 只有这部分可以滚动 */}
             <div className="flex-grow overflow-y-auto p-4 custom-scrollbar">
                 {messages.length === 0 ? (
                     <div className="h-full flex items-center justify-center">
@@ -164,8 +164,8 @@ const Chat = () => {
                 <div ref={messageEndRef} />
             </div>
 
-            {/* 输入区域 */}
-            <div className="flex-none p-4 border-t border-gray-200">
+            {/* 输入区域 - 固定在底部 */}
+            <div className="flex-none p-4 border-t border-gray-200 bg-white z-10">
                 <div className="flex flex-col gap-2">
                     <TextArea
                         value={input}

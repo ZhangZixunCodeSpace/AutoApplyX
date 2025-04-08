@@ -8,14 +8,14 @@ import './App.css'
 function App() {
   return (
     <ConfigProvider locale={zhCN}>
-      <div className="flex h-screen overflow-hidden bg-white">
-        {/* 侧边栏 (占屏幕宽度的 1/5) */}
-        <div className="w-1/5 min-w-[250px] max-w-[300px]">
+      <div className="flex h-screen w-screen overflow-hidden bg-white absolute top-0 left-0 right-0 bottom-0">
+        {/* 侧边栏 (固定宽度) */}
+        <div className="w-[250px] h-full flex-shrink-0">
           <Sidebar />
         </div>
 
-        {/* 聊天区域 (占屏幕宽度的 4/5) */}
-        <div className="flex-1 flex flex-col">
+        {/* 聊天区域 */}
+        <div className="flex-1 h-full">
           <Chat />
         </div>
       </div>
