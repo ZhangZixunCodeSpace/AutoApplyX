@@ -122,42 +122,43 @@ const Chat = () => {
                     </div>
                 ) : (
                     messages.map((msg) => (
-                        <div
-                            key={msg.id}
-                            className={`chat-message ${msg.sender === 'user' ? 'user-message' : 'agent-message'}`}
-                        >
-                            <div className="flex items-center gap-2 mb-1">
-                                {msg.sender === 'user' ? (
-                                    <UserOutlined className="text-blue-500" />
-                                ) : (
-                                    <RobotOutlined className="text-gray-500" />
-                                )}
-                                <Text strong>{msg.sender === 'user' ? '您' : 'AI 助手'}</Text>
-                                <Text type="secondary" className="text-xs">
-                                    {new Date(msg.timestamp).toLocaleTimeString()}
-                                </Text>
-                            </div>
-
-                            <ReactMarkdown className="prose prose-sm max-w-none">
-                                {msg.content}
-                            </ReactMarkdown>
-
-                            {msg.files && msg.files.length > 0 && (
-                                <div className="mt-2">
-                                    <Text type="secondary" className="text-xs">已上传文件:</Text>
-                                    <div className="flex flex-wrap gap-2 mt-1">
-                                        {msg.files.map((file, index) => (
-                                            <div
-                                                key={index}
-                                                className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-md text-xs"
-                                            >
-                                                <FileOutlined />
-                                                <span>{file}</span>
-                                            </div>
-                                        ))}
-                                    </div>
+                        <div key={msg.id} className={`w-full flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
+                            <div className={`chat-message ${msg.sender === 'user' ? 'user-message' : 'agent-message'}`}>
+                                <div className="flex items-center gap-2 mb-1">
+                                    {msg.sender === 'user' ? (
+                                        <UserOutlined className="text-blue-500" />
+                                    ) : (
+                                        <RobotOutlined className="text-gray-500" />
+                                    )}
+                                    <Text strong>{msg.sender === 'user' ? '您' : 'AI 助手'}</Text>
+                                    <Text type="secondary" className="text-xs">
+                                        {new Date(msg.timestamp).toLocaleTimeString()}
+                                    </Text>
                                 </div>
-                            )}
+
+                                <div className="text-left w-full">
+                                    <ReactMarkdown className="prose prose-sm max-w-none">
+                                        {msg.content}
+                                    </ReactMarkdown>
+                                </div>
+
+                                {msg.files && msg.files.length > 0 && (
+                                    <div className="mt-2">
+                                        <Text type="secondary" className="text-xs">已上传文件:</Text>
+                                        <div className="flex flex-wrap gap-2 mt-1">
+                                            {msg.files.map((file, index) => (
+                                                <div
+                                                    key={index}
+                                                    className="flex items-center gap-1 bg-gray-100 px-2 py-1 rounded-md text-xs"
+                                                >
+                                                    <FileOutlined />
+                                                    <span>{file}</span>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     ))
                 )}

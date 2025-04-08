@@ -28,7 +28,7 @@ body {
 
 /* 聊天消息相关样式 */
 .chat-message {
-  @apply mb-4 px-4 py-3 rounded-lg max-w-[80%];
+  @apply mb-4 px-4 py-3 rounded-lg max-w-[80%] text-left;
 }
 
 .user-message {
@@ -61,4 +61,24 @@ body {
 .input-actions .ant-upload-button,
 .input-actions .ant-btn {
   @apply h-10;
+}
+
+/* 优化代码块等特殊内容 */
+.chat-message pre {
+  @apply overflow-x-auto;
+  max-width: 100%;
+}
+
+.chat-message code {
+  @apply whitespace-pre-wrap;
+}
+
+/* 修复 Markdown 内容的对齐问题 */
+.chat-message .prose {
+  @apply text-left w-full;
+}
+
+/* 确保段落左对齐 */
+.chat-message p {
+  @apply text-left;
 }
